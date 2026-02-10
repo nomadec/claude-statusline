@@ -15,6 +15,7 @@ current_usage=$(echo "$input" | jq -r '.context_window.current_usage')
 # Use full path (replace home with ~)
 dir="${cwd/#$HOME/~}"
 
+
 # Calculate context percentage from current_usage
 ctx_percent=""
 if [ "$current_usage" != "null" ] && [ "$context_size" != "null" ] && [ "$context_size" -gt 0 ]; then
@@ -109,12 +110,12 @@ fi
 output="\033[32m${dir}\033[0m"
 
 if [ -n "$branch" ]; then
-    output="${output} on \033[35m${branch}\033[0m"
+    output="${output}\n\033[35m${branch}\033[0m"
     [ -n "$upstream" ] && output="${output}\033[36m${upstream}\033[0m"
     [ -n "$git_status" ] && output="${output}\033[${git_color}m${git_status}\033[0m"
 fi
 
-output="${output} [\033[35m${model}\033[0m"
+output="${output}\n[\033[35m${model}\033[0m"
 
 # Add session cost or error
 if [ -n "$ccusage_error" ]; then

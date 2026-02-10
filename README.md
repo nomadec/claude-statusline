@@ -5,12 +5,16 @@ Real-time stats display for [Claude Code](https://claude.com/code) CLI showing s
 ## Screenshot
 
 ```
-~/projects/myapp on main! [Opus 4.5 | $3.43 | CTX: 32%] (today: $5.44 | $5.44 block (3h 19m left))
+~/projects/myapp
+main!
+[Opus 4.5 | $3.43 | CTX: 32%] (today: $5.44 | $5.44 block (3h 19m left))
 ```
 
 When there's an error (e.g., Node.js not configured for the project):
 ```
-~/projects/myapp on main! [Opus 4.5 | nodejs not configured | CTX: 32%]
+~/projects/myapp
+main!
+[Opus 4.5 | nodejs not configured | CTX: 32%]
 ```
 
 ## Features
@@ -62,15 +66,14 @@ chmod +x ~/.claude/statusline.sh
 ## Output Format
 
 ```
-~/path on branch! [Model | $X.XX | CTX: XX%] (today: $X.XX | $X.XX block (Xh Xm left))
-│        │     │   │       │       │          │            └─ 5-hour block cost + time remaining
-│        │     │   │       │       │          └─ Today's total cost
-│        │     │   │       │       └─ Context window usage (color-coded)
-│        │     │   │       └─ Session cost
-│        │     │   └─ Model name (Opus 4.5, Sonnet, Haiku)
-│        │     └─ Git status: ! (changes), ? (untracked), ↑↓ (ahead/behind)
-│        └─ Git branch
-└─ Working directory
+~/path                                        ← Working directory
+branch!                                       ← Git branch + status (! changes, ? untracked, ↑↓ ahead/behind)
+[Model | $X.XX | CTX: XX%] (today: $X.XX | $X.XX block (Xh Xm left))
+ │       │       │          │            └─ 5-hour block cost + time remaining
+ │       │       │          └─ Today's total cost
+ │       │       └─ Context window usage (color-coded)
+ │       └─ Session cost
+ └─ Model name (Opus 4.5, Sonnet, Haiku)
 ```
 
 ## Customization
